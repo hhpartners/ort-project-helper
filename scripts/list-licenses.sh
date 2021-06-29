@@ -13,5 +13,5 @@ orth --info list-licenses \
   --offending-severity ERROR \
   --omit-excluded \
   --apply-license-finding-curations \
-  --package-configuration-dir $SCRIPT_DIR/../ort-configuration-files/package-configurations/
+  --package-configuration-dir $SCRIPT_DIR/../ort-config/package-configurations/
 
