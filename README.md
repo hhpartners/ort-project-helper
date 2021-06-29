@@ -7,4 +7,4 @@ ORT evaluation result to `ort-results/<repository-name>/evaluate/evaluation-resu
 
 ## Helper scripts
 
-[`scripts` directory](scripts/) include helper scripts for working with ORT.
+[`scripts` directory](scripts/) includes helper scripts for working with ORT.
