@@ -12,11 +12,11 @@ then
   exit 1
 fi
 
-mkdir -p $SCRIPT_DIR/../violations
+mkdir -p $SCRIPT_DIR/../violations/$repo
 
-for pkg in $(yq e '.evaluator.violations[] | .pkg' $SCRIPT_DIR/../ort-results/$repo/evaluate/evaluation-result.yml );
+for pkg in $(yq e '.evaluator.violations[] | [select(.severity == "ERROR").pkg] | unique | .[]' $SCRIPT_DIR/../ort-results/$repo/evaluate/evaluation-result.yml );
 do
   echo "Listing violations for $pkg"
-  $SCRIPT_DIR/list-licenses.sh $repo $pkg > $SCRIPT_DIR/../violations/$pkg
+  $SCRIPT_DIR/list-licenses.sh $repo $pkg > $SCRIPT_DIR/../violations/$repo/$pkg
 done
 
