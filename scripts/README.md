@@ -35,4 +35,4 @@ List license locations for the given package id that cause `ERROR` level rule vi
 
 `./scripts/list-all-violation <repository-same>`
 
-Run [`list-licenses.sh`](#list-licensessh)
+Run [`list-licenses.sh`](#list-licensessh) for all violations.
