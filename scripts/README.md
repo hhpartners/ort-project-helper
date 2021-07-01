@@ -1,5 +1,7 @@
 # Scripts to help working with ORT
 
+Add name of ORT Docker image as environment variable `$ORT_DOCKER_IMAGE`.
+
 ## evaluate-report.sh
 
 `./scripts/evaluate-report.sh <repository-name>`
@@ -14,7 +16,7 @@ Evaluate the given repository and create new reports. Requires scan result for t
 
 Creates package configuration file for the given package id in `config/package-configurations/`. Requires scan results
 from the evaluation result to be extracted to a directory. Can be done with
-[`import-scan-results.sh`](#import-scan-results.sh)
+[`import-scan-results.sh`](#import-scan-resultssh)
 
 ## import-scan-results.sh
 
@@ -28,3 +30,9 @@ Exports scan results from the evaluation result for the given repository to
 `./scripts/list-licenses.sh <repository-name> <package-id>`
 
 List license locations for the given package id that cause `ERROR` level rule violations.
+
+## list-all-violations.sh
+
+`./scripts/list-all-violation <repository-same>`
+
+Run [`list-licenses.sh`](#list-licensessh)

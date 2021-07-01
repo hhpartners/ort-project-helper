@@ -5,12 +5,23 @@ repo=$1
 # Get directory of the script.
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-ort --info --force-overwrite analyze \
-  --input-dir $SCRIPT_DIR/../source-repositories/$repo \
-  --output-dir $SCRIPT_DIR/../ort-results/$repo/analyze \
-  --package-curations-file $SCRIPT_DIR/../ort-config/curations.yml
+if [ -z ${ORT_DOCKER_IMAGE+x }];
+then
+  echo "\$ORT_DOCKER_IMAGE has not been set."
+  echo "Set the variable to ORT image to use the scripts."
+  exit 1
+fi
 
-ort --info --force-overwrite scan \
-  --ort-file $SCRIPT_DIR/../ort-results/$repo/analyze/analyzer-result.yml \
-  --output-dir $SCRIPT_DIR/../ort-results/$repo/scan
+docker run \
+  -v $SCRIPT_DIR/../:/project \
+  $ORT_DOCKER_IMAGE --info --force-overwrite analyze \
+  --input-dir /project/source-repositories/$repo \
+  --output-dir /project/ort-results/$repo/analyze \
+  --package-curations-file /project/ort-config/curations.yml
+
+docker run \
+  -v $SCRIPT_DIR/../:/project \
+  $ORT_DOCKER_IMAGE --info --force-overwrite scan \
+  --ort-file /project/ort-results/$repo/analyze/analyzer-result.yml \
+  --output-dir /project/ort-results/$repo/scan
 
