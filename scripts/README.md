@@ -20,7 +20,7 @@ from the evaluation result to be extracted to a directory. Can be done with
 
 ## import-scan-results.sh
 
-`./scripts/import-licenses.sh <repository-name>`
+`./scripts/import-scan-results.sh <repository-name>`
 
 Exports scan results from the evaluation result for the given repository to
 `ort-results/scan-result-dirs/<repository-name>`.
