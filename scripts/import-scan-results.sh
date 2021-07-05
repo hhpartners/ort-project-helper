@@ -12,7 +12,7 @@ then
   exit 1
 fi
 
-docker run --entrypoint /opt/ort/bin/orth \
+docker run --rm --entrypoint /opt/ort/bin/orth \
   -v $SCRIPT_DIR/../:/project \
   $ORT_DOCKER_IMAGE --info import-scan-results \
   --ort-file /project/ort-results/$repo/evaluate/evaluation-result.yml \

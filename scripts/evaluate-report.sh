@@ -12,7 +12,7 @@ then
   exit 1
 fi
 
-docker run \
+docker run --rm \
   -v $SCRIPT_DIR/../:/project \
   $ORT_DOCKER_IMAGE --info --force-overwrite evaluate \
   --ort-file /project/ort-results/$repo/scan/scan-result.yml \
@@ -23,7 +23,7 @@ docker run \
   --repository-configuration-file /project/ort-config/$repo.ort.yml \
   --package-configuration-dir /project/ort-config/package-configurations/ || true
 
-docker run \
+docker run --rm \
   -v $SCRIPT_DIR/../:/project \
   $ORT_DOCKER_IMAGE --info --force-overwrite report \
   --ort-file /project/ort-results/$repo/evaluate/evaluation-result.yml \
