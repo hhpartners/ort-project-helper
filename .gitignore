@@ -4,3 +4,4 @@ source-repositories/
 scan-result-dirs/
 orth*/
 violations/
+scanner/
